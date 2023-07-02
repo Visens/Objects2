@@ -3,75 +3,112 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     Radio rad = new Radio();
-    //Test changes of Volume
+
     @Test
-    public void SetCurrentVolume() {
-        rad.currentVolume = 50;
-        int expected = 50;
-        int actual = rad.getCurrentVolume();
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
-    public void setMaxVolume() {
+    public void testGetMaxVolume(){
         int expected = 100;
-        int actual = rad.maxVolume;
+        int actual = rad.getMaxVolume();
+
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void setMinVolume() {
+    public void testSetMaxVolume(){
+        rad.setMaxVolume(100);
+        int expected = 100;
+        int actual = rad.getMaxVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetMinVolume(){
         int expected = 0;
-        int actual = rad.minVolume;
+        int actual = rad.getMinVolume();
+
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void pressMinusVolume() {
-        rad.currentVolume = 100;
-        rad.pressMinusVolume();
-        int expected = 99;
+    public void testSetMinVolumee(){
+        rad.setMinVolume(0);
+        int expected = 0;
+        int actual = rad.getMinVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSetCurrentVolume(){
+        rad.setCurrentVolume(60);
+        int expected = 60;
         int actual = rad.getCurrentVolume();
+
         Assertions.assertEquals(expected, actual);
     }
     @Test
     public void pressPlusVolume() {
-        rad.currentVolume = 100;
+        rad.setCurrentVolume(90);
         rad.pressPlusVolume();
         int expected = 100;
         int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
-    //Test changes of Stations
     @Test
-    public void setCurrentStation() {
-        rad.currentStation = 7;
-        int expected = 7;
-        int actual = rad.getCurrentStation();
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
-    public void setMaxStation() {
-        int expected = 9;
-        int actual = rad.maxStation;
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
-    public void setMinStation() {
+    public void pressMinusVolume() {
+        rad.setCurrentVolume(10);
+        rad.pressMinusVolume();
         int expected = 0;
-        int actual = rad.minStation;
+        int actual = rad.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void pressMinusStation() {
-        rad.currentStation = 5;
-        rad.pressMinusStation();
-        int expected = 4;
+    public void testSetMaxStation(){
+        rad.setMaxStation(10);
+        int expected = 10;
+        int actual = rad.getMaxStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetMaxStation(){
+        int expected = 9;
+        int actual = rad.getMaxStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSetMinStation(){
+        rad.setMinStation(1);
+        int expected = 1;
+        int actual = rad.getMinStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetMinStation(){
+        int expected = 0;
+        int actual = rad.getMinStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void testSetCurrentStation(){
+        rad.setCurrentStation(5);
+        int expected = 5;
+        int actual = rad.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void pressPrevStation() {
+        rad.setCurrentStation(0);
+        rad.pressPrevStation();
+        int expected = 9;
         int actual = rad.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
     @Test
-    public void pressPlusStation() {
-        rad.currentStation = 6;
-        rad.pressPlusStation();
-        int expected = 7;
+    public void pressNextStation() {
+        rad.setCurrentStation(9);
+        rad.pressNextStation();
+        int expected = 0;
         int actual = rad.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
