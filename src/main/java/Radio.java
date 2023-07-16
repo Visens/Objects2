@@ -1,11 +1,22 @@
 public class Radio {
-    public int maxVolume = 100;
-    public int minVolume = 0;
-    public int currentVolume;
-    public int maxStation = 9;
-    public int minStation = 0;
-    public int currentStation;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume;
+    private int maxStation = 9;
+    private int minStation = 0;
+    private int currentStation;
+    private int size[];
 
+    public Radio() {
+        this.maxStation = 9;
+    }
+
+    public Radio (int stationCount){
+        maxStation = minStation + stationCount - 1;
+        //Выбор количества радиостанций,
+        //по умолчанию количество радиостанций указано в
+        //инициализаторах полей
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -16,12 +27,12 @@ public class Radio {
     public int getMinVolume() {
         return minVolume;
     }
-    public void setMaxVolume(int maxVolume) {
+/*    public void setMaxVolume(int maxVolume) {
         this.maxVolume = maxVolume;
     }
     public void setMinVolume(int minVolume) {
         this.minVolume = minVolume;
-    }
+    }*/
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume > maxVolume) {
             return;
@@ -46,27 +57,27 @@ public class Radio {
     public int getMinStation() {
         return minStation;
     }
-    public void setMaxStation(int maxStation) {
+/*    public void setMaxStation(int maxStation) {
         this.maxStation = maxStation;
     }
     public void setMinStation(int minStation) {
         this.minStation = minStation;
-    }
+    }*/
     public void setCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
-            return;
+            currentStation = minStation;
         }
         if (currentStation < minStation) {
-            return;
+            currentStation = maxStation;
         }
         this.currentStation = currentStation;
     }
 
-    public void pressPlusStation() {
+    public void pressNextStation() {
         setCurrentStation(currentStation + 1);
     }
 
-    public void pressMinusStation() {
+    public void pressPrevStation() {
         setCurrentStation(currentStation - 1);
     }
 }
