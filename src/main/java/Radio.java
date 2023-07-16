@@ -7,6 +7,8 @@ public class Radio {
     private int currentStation;
     private int size[];
 
+
+
     public Radio() {
         this.maxStation = 9;
     }
